@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+}
+header {
+    font-family:  cursive;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-radius: 10px;
+    border: 10px rgba(139, 69, 19, 0.164) solid;
+    /* border-color: blue; */
+    position: sticky;
+    z-index: 1;
+    margin: 10px 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.178), 0 0 15px 0 rgba(0, 0, 0, 0.308);
+}
+nav {
+    text-decoration: none;
+    margin-right: 10px;
+    
+}
+nav a{
+    color: black;
+    text-decoration: none;
+}
+nav a:hover{
+    color: brown;
+    font-size: 16px;
+    text-decoration: underline;
+}
+.add__cat{
+    margin: 25px;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    font-family: sans-serif;
+    opacity: 0.7;
+}
+.card {
+    background-color: rgb(242, 247, 244);
+    border-radius: 10px;
+    border: 10px solid;
+    border-color: rgba(39, 39, 39, 0.041);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.178), 0 0 15px 0 rgba(0, 0, 0, 0.308);
+    
+    
+}
+.card:hover{
+        transform: scale(1.1, 1.1);
+        transition: 1s linear;
+        box-shadow: 0 0 5px 0 #0006, 0 0 15px 0 #0009;
+}
+.card .imglink{
+    height: 150px;
+    width: 200px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.card .rate img{
+    width: 15px;
+    height: auto;
+    margin-right: 2px;
+    
+}
+
+.name {
+    font-family: sans-serif;
+    font-size: 24px;
+    color: brown;
+    margin-top: 10px;
+    
+}
+.imglink img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.age{
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+.description{
+    font-family: sans-serif;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+.about{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 45px;
+
+    
+}
+section{
+   padding: 25px calc(50% - 600px);
+}
+.rate{
+    margin: 5px ;
+}
