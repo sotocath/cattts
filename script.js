@@ -1,3 +1,5 @@
+const storage = window.localStorage;
+
 const divAbout=document.querySelector("div.about");
 function setRate(num){
     let plus="<img src='img/ello-brands.svg'>";
@@ -29,8 +31,9 @@ function setRate(num){
 }
 
 function renderItem(data){
-    let item=`
-    <div class="card">
+     let div= document.createElement("div");
+     div.className = "card";
+    div.innerHTML=`
             <h1 class="name">${data.name}</h1>
             <p class="age">${data.age} ${getWord(data.age, "год", "года", "лет")}</p>
             <div class="imglink" style="background-image: url(${data.img_link})">
@@ -39,8 +42,50 @@ function renderItem(data){
             <div class="rate">
             ${setRate(data.rate)}
             </div>
-        </div>
-    `
-    divAbout.innerHTML+=item;
+        
+    `;
+    div.addEventListener("click", function(e){
+        window.location.replace(`cat.html#${data.id}`);
+    })
+    
+    return div;
 }
-cats.forEach(renderItem)
+
+
+
+let container=document.querySelector(".card");
+function setCard(cat={}){
+        divAbout.append(renderItem(cat));
+    }
+    
+
+
+let path = {
+    getAll: "http://sb-cats.herokuapp.com/api/2/katya--38/show",
+    getOne: "http://sb-cats.herokuapp.com/api/2/katya--38/show/",
+    getId: "http://sb-cats.herokuapp.com/api/2/katya--38/ids",
+    add: "http://sb-cats.herokuapp.com/api/2/katya--38/add",
+    upd: "http://sb-cats.herokuapp.com/api/2/katya--38/update/",
+    del: "http://sb-cats.herokuapp.com/api/2/katya--38/delete/"
+}
+
+
+let cats = storage.getItem("cats");
+if (!cats) {
+    fetch(path.getAll)
+        .then(res => res.json())
+        .then(result => {
+            console.log(result);
+            if (result.data) {
+                storage.setItem("cats", JSON.stringify(result.data));
+                result.data.forEach(cat => {
+                    setCard(cat);
+                });
+            }
+        });
+} else {
+    JSON.parse(cats).forEach(cat => {
+        setCard(cat);
+    });
+}
+
